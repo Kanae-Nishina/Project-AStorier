@@ -51,6 +51,11 @@ ja:
               record_invalid: "バリデーションに失敗しました: %{errors}"
             provider:
               record_invalid: "バリデーションに失敗しました: %{errors}"
+        profile:
+          attributes:
+            text:
+              too_long: "プロフィールは%{count}文字以内で入力してください"
+              record_invalid: "バリデーションに失敗しました: %{errors}"
       messages:
         blank: "を入力してください"
         too_long: "は%{count}文字以内で入力してください"
