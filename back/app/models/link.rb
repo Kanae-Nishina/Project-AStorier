@@ -13,6 +13,9 @@ class Link < ApplicationRecord
   belongs_to :user, primary_key: :uuid, foreign_key: :user_uuid
   enum link_kind: { twitter: 0, pixiv: 1, fusetter: 2, privatter: 3, other: 4}
 
+  validates :link_kind, presence: true
+  validates :content, presence: true
+
   def self.set_links(user_uuid, links)
     links.each do |link_kind, link_url|
       Rails.logger.info("link_kind: #{link_kind}, link_url: #{link_url}")
