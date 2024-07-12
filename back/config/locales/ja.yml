@@ -56,6 +56,12 @@ ja:
             text:
               too_long: "プロフィールは%{count}文字以内で入力してください"
               record_invalid: "バリデーションに失敗しました: %{errors}"
+        link:
+          attributes:
+            link_kind:
+              blank: "リンクタイプを選択してください"
+            content:
+              blank: "URLを入力してください"
       messages:
         blank: "を入力してください"
         too_long: "は%{count}文字以内で入力してください"
