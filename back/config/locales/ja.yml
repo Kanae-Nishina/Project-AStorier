@@ -56,6 +56,9 @@ ja:
             text:
               too_long: "プロフィールは%{count}文字以内で入力してください"
               record_invalid: "バリデーションに失敗しました: %{errors}"
+            avatar:
+              too_large: "画像は%{max_size}MB以下のファイルを選択してください"
+              invalid_content_type: "画像形式は%{content_type}のみ対応しています"
         link:
           attributes:
             link_kind:
