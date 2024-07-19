@@ -11,13 +11,14 @@
 #  user_uuid    :uuid             not null
 #
 class Profile < ApplicationRecord
+  include AttachmentValidations
+
   belongs_to :user, foreign_key: :user_uuid, primary_key: :uuid
   validates :text, length: { maximum: 1000 }
 
-  has_one_attached :header_image
-  has_one_attached :avatar
+  has_validated_attachment :header_image
+  has_validated_attachment :avatar
 
-  # ヘッダー画像の保存
   def save_header_image(image)
     return if image.blank? || image.start_with?('http')
     transaction do
