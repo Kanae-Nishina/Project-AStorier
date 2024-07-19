@@ -27,6 +27,7 @@ group :development, :test do
   gem 'annotate'          # モデルのスキーマを表示する
   gem 'rspec-rails'       # RSpec
   gem 'factory_bot_rails' # テストデータ作成
+  gem 'simplecov'         # テストカバレッジ
 end
 
 group :production do
