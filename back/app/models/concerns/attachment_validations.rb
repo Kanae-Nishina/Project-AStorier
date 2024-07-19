@@ -18,13 +18,13 @@ module AttachmentValidations
 
     def validate_attachment_size(attachment, attachment_name)
       if attachment.attached? && attachment.blob.byte_size > MAX_ATTACHMENT_SIZE
-        errors.add(attachment_name, :too_large, max_size: MAX_ATTACHMENT_SIZE)
+        errors.add(attachment_name, :too_large, max_size: MAX_ATTACHMENT_SIZE / 1.megabyte)
       end
     end
 
     def validate_attachment_content_type(attachment, attachment_name)
       if attachment.attached? && !attachment.blob.content_type.in?(%w(image/webp))
-        errors.add(attachment_name, :invalid_content_type)
+        errors.add(attachment_name, :invalid_content_type, content_type: 'webp')
       end
     end
   end
