@@ -30,9 +30,9 @@ module App
     config.api_only = true
 
     config.generators do |g|
+      g.test_framework :rspec
       g.skip_routes true
       g.helper false
-      g.test_framework nil
     end
 
     config.time_zone = 'Tokyo'
