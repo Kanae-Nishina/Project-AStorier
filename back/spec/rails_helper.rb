@@ -65,9 +65,4 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods
   config.include FactoryBotHelpers
-
-  if ENV['RAILS_ENV'] == 'test'
-    require 'simplecov'
-    SimpleCov.start 'rails'
-  end
 end
