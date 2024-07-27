@@ -9,7 +9,9 @@
 #  updated_at :datetime         not null
 #
 class IllustAttachment < ApplicationRecord
+  include AttachmentValidations
   belongs_to :illust
-  has_one_attached :image
+  has_validated_attachment :image
+  validates :image, presence: true
   validates :position, presence: true
 end
