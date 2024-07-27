@@ -46,6 +46,7 @@ RSpec.describe Profile, type: :model do
       profile.avatar.attach(io: StringIO.new(image_blob),
                             filename: SecureRandom.uuid,
                             content_type: 'image/webp')
+      profile.valid?
       expect(profile.errors.full_messages).to be_empty
     end
 
@@ -55,6 +56,7 @@ RSpec.describe Profile, type: :model do
       profile.avatar.attach(io: StringIO.new(image_blob),
                             filename: SecureRandom.uuid,
                             content_type: 'image/webp')
+      profile.valid?
       expect(profile.errors.full_messages).to include('Avatar 画像は10MB以下のファイルを選択してください')
     end
 
@@ -64,6 +66,7 @@ RSpec.describe Profile, type: :model do
       profile.avatar.attach(io: StringIO.new(image_blob),
                             filename: SecureRandom.uuid,
                             content_type: 'image/webp')
+      profile.valid?
       expect(profile.errors.full_messages).to be_empty
     end
 
@@ -73,6 +76,7 @@ RSpec.describe Profile, type: :model do
       profile.avatar.attach(io: StringIO.new(image_blob),
                             filename: SecureRandom.uuid,
                             content_type: 'image/jpg')
+      profile.valid?
       expect(profile.errors.full_messages).to include('Avatar 画像形式はwebpのみ対応しています')
     end
   end
@@ -96,6 +100,7 @@ RSpec.describe Profile, type: :model do
       profile.header_image.attach(io: StringIO.new(image_blob),
                                   filename: SecureRandom.uuid,
                                   content_type: 'image/webp')
+      profile.valid?
       expect(profile.errors.full_messages).to be_empty
     end
 
@@ -105,6 +110,7 @@ RSpec.describe Profile, type: :model do
       profile.header_image.attach(io: StringIO.new(image_blob),
                                   filename: SecureRandom.uuid,
                                   content_type: 'image/webp')
+      profile.valid?
       expect(profile.errors.full_messages).to include('Header image 画像は10MB以下のファイルを選択してください')
     end
 
@@ -114,6 +120,7 @@ RSpec.describe Profile, type: :model do
       profile.header_image.attach(io: StringIO.new(image_blob),
                                   filename: SecureRandom.uuid,
                                   content_type: 'image/webp')
+      profile.valid?
       expect(profile.errors.full_messages).to be_empty
     end
 
@@ -123,6 +130,7 @@ RSpec.describe Profile, type: :model do
       profile.header_image.attach(io: StringIO.new(image_blob),
                                   filename: SecureRandom.uuid,
                                   content_type: 'image/jpg')
+      profile.valid?
       expect(profile.errors.full_messages).to include('Header image 画像形式はwebpのみ対応しています')
     end
   end
