@@ -11,19 +11,19 @@ RSpec.describe User, type: :model do
     it 'uidがないと登録できない' do
       user = build(:user, uid: nil)
       user.valid?
-      expect(user.errors.full_messages).to include('Uid を入力してください')
+      expect(user.errors.full_messages).to include('Uid ユーザーIDを入力してください')
     end
 
     it 'providerがないと登録できない' do
       user = build(:user, provider: nil)
       user.valid?
-      expect(user.errors.full_messages).to include('Provider を入力してください')
+      expect(user.errors.full_messages).to include('Provider プロバイダーを入力してください')
     end
 
     it 'emailがないと登録できない' do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors.full_messages).to include('Eメール を入力してください')
+      expect(user.errors.full_messages).to include('Eメール メールアドレスを入力してください')
     end
 
     it 'emailが重複していると登録できない' do
@@ -42,19 +42,19 @@ RSpec.describe User, type: :model do
     it 'passwordがないと登録できない' do
       user = build(:user, password: nil)
       user.valid?
-      expect(user.errors.full_messages).to include('パスワード を入力してください')
+      expect(user.errors.full_messages).to include('パスワード パスワードを入力してください')
     end
 
     it 'passwordが6文字未満だと登録できない' do
       user = build(:user, password: 'test')
       user.valid?
-      expect(user.errors.full_messages).to include('パスワード は6文字以上で入力してください')
+      expect(user.errors.full_messages).to include('パスワード パスワードは6文字以上で入力してください')
     end
 
     it 'nameがないと登録できない' do
       user = build(:user, name: nil)
       user.valid?
-      expect(user.errors.full_messages).to include('Name を入力してください')
+      expect(user.errors.full_messages).to include('Name ユーザー名を入力してください')
     end
   end
 end
