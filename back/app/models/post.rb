@@ -30,6 +30,7 @@ class Post < ApplicationRecord
   has_many :post_comments, foreign_key: :post_uuid, dependent: :destroy
   has_many :comments, through: :post_comments
 
+  validates :postable_type, presence: true
   validates :title, presence: true, length: { maximum: 20 }
   validates :caption, length: { maximum: 10_000 }
   enum publish_state: { draft: 0, all_publish: 1, only_url: 2, only_follower: 3, private_publish:4 }

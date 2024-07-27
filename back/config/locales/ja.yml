@@ -17,6 +17,14 @@ ja:
               required: "投稿タイプを設定してください"
             post_game_systems:
               invalid: "無効なゲームシステムです"
+        illust_attachment:
+          attributes:
+            image:
+              blank: "イラストを選択してください"
+              too_large: "イラストは%{max_size}MB以下のファイルを選択してください"
+              invalid_content_type: "イラスト形式は%{content_type}のみ対応しています"
+            position:
+              blank: "イラストの表示順を設定してください"
         tag:
           attributes:
             name:
@@ -42,15 +50,20 @@ ja:
         user:
           attributes:
             name:
+              blank: "ユーザー名を入力してください"
               taken: "が既に使用されています"
             email:
               taken: "が既に使用されています"
+              blank: "メールアドレスを入力してください"
+              invalid: "メールアドレスの形式が正しくありません"
             password:
-              record_invalid: "バリデーションに失敗しました: %{errors}"
+              too_short: "パスワードは%{count}文字以上で入力してください"
+              blank: "パスワードを入力してください"
             uid:
-              record_invalid: "バリデーションに失敗しました: %{errors}"
+              blank: "ユーザーIDを入力してください"
+              taken: "が既に使用されています"
             provider:
-              record_invalid: "バリデーションに失敗しました: %{errors}"
+              blank: "プロバイダーを入力してください"
         profile:
           attributes:
             text:
@@ -68,8 +81,3 @@ ja:
               blank: "リンクタイプを選択してください"
             content:
               blank: "URLを入力してください"
-      messages:
-        blank: "を入力してください"
-        too_long: "は%{count}文字以内で入力してください"
-        too_short: "は%{count}文字以上で入力してください"
-        record_invalid: "バリデーションに失敗しました: %{errors}"
