@@ -26,35 +26,35 @@ TRPG で遊んだユーザーの中には、自分の PC、あるいは一緒に
 
 |                                     トップページ                                     |                                    検索・検索結果                                    |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/db05b448161162ecf067897d772c389c.gif" width="400px" /> | <img src="https://i.gyazo.com/39ff53eb4ac53e0d8789e4c4edf58e62.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/db05b448161162ecf067897d772c389c.gif" width="300px" /> | <img src="https://i.gyazo.com/39ff53eb4ac53e0d8789e4c4edf58e62.gif" width="300px" /> |
 
 |                                     イラスト詳細                                     |                                    ユーザーページ                                    |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/19bad680d3b210c1a45494320a2e7fdd.gif" width="400px" /> | <img src="https://i.gyazo.com/1b2ac5fabe35c140272cadf601960e93.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/19bad680d3b210c1a45494320a2e7fdd.gif" width="300px" /> | <img src="https://i.gyazo.com/1b2ac5fabe35c140272cadf601960e93.gif" width="300px" /> |
 
 |                                  新規登録・ログイン                                  |                                    ★ イラスト投稿                                    |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/778363f57128fe1c4329f5d75d2d53ae.gif" width="400px" /> | <img src="https://i.gyazo.com/0425cada89900071b51f36e568982812.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/778363f57128fe1c4329f5d75d2d53ae.gif" width="300px" /> | <img src="https://i.gyazo.com/0425cada89900071b51f36e568982812.gif" width="300px" /> |
 
 |                               ★ イラスト編集（下書き）                               |                              ★ イラスト編集（公開済み）                              |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/4468931e1dc9a09cec52f23d608bea2a.gif" width="400px" /> | <img src="https://i.gyazo.com/1e01a32cddb5b064a15e484828869d90.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/4468931e1dc9a09cec52f23d608bea2a.gif" width="300px" /> | <img src="https://i.gyazo.com/1e01a32cddb5b064a15e484828869d90.gif" width="300px" /> |
 
 |                                    ★ イラスト削除                                    |                               ★ フォロー・フォロー解除                               |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/4a7cdf393443c4cd4cb762a8667d76d1.gif" width="400px" /> | <img src="https://i.gyazo.com/bacfc9c60f4179cbd57ae2edcf39b466.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/4a7cdf393443c4cd4cb762a8667d76d1.gif" width="300px" /> | <img src="https://i.gyazo.com/bacfc9c60f4179cbd57ae2edcf39b466.gif" width="300px" /> |
 
 |                                       ★ いいね                                       |                                    ★ ブックマーク                                    |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/02ecb2e3b2a685feca11103ef840f833.gif" width="400px" /> | <img src="https://i.gyazo.com/323adf0bef31c4d96a291e7b4a35bc7e.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/02ecb2e3b2a685feca11103ef840f833.gif" width="300px" /> | <img src="https://i.gyazo.com/323adf0bef31c4d96a291e7b4a35bc7e.gif" width="300px" /> |
 
 |                                      ★ コメント                                      |                                     ★ マイページ                                     |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/17e9fbd90ecac5493b231fceb8d29162.gif" width="400px" /> | <img src="https://i.gyazo.com/d0eeee6d74cf710e7555129f164553ef.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/17e9fbd90ecac5493b231fceb8d29162.gif" width="300px" /> | <img src="https://i.gyazo.com/d0eeee6d74cf710e7555129f164553ef.gif" width="300px" /> |
 
 |                                   ★ アカウント設定                                   |                                        ★ 退会                                        |
 | :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="https://i.gyazo.com/6904e85638a6e40de7bdb9cad606ce96.png" width="400px" /> | <img src="https://i.gyazo.com/0367be34da034cd9184669c6b7b56168.gif" width="400px" /> |
+| <img src="https://i.gyazo.com/6904e85638a6e40de7bdb9cad606ce96.png" width="300px" /> | <img src="https://i.gyazo.com/0367be34da034cd9184669c6b7b56168.gif" width="300px" /> |
 
 ### 今後の実装予定
 
@@ -83,4 +83,4 @@ TRPG で遊んだユーザーの中には、自分の PC、あるいは一緒に
 
 # ER 図
 
-<img src="https://github.com/topi0247/Project-AStoryer/assets/23026318/06ed92fc-af11-45a8-9a05-92ab834f169c" width="500px" />
+<img src="https://github.com/user-attachments/assets/9688d547-73ba-4415-9dc8-33b81a3d5392" width="500px" />
