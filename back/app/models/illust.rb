@@ -10,7 +10,8 @@
 class Illust < ApplicationRecord
   has_one :post, as: :postable, foreign_key: :user_uuid, dependent: :destroy
   has_many :illust_attachments, -> {order(:position)}, dependent: :destroy
-  has_many_attached :image
+
+  validate :illust_attachments_count_within_limit
 
   def illust_images_update!(data_images)
     transaction do
@@ -58,6 +59,16 @@ class Illust < ApplicationRecord
     end
   end
 
+  def get_first_image
+    if illust_attachments.present?
+      illust_attachments.first.image
+    else
+      raise StandardError, "画像がありません"
+    end
+  end
+
+  private
+
   def illust_image_create!(data_image, index)
     # 送信されるデータは data: から始まるためエンコードデータのみ抽出
     base64_data = data_image
@@ -80,11 +91,9 @@ class Illust < ApplicationRecord
     illust_attachment
   end
 
-  def get_first_image
-    if illust_attachments.present?
-      illust_attachments.first.image
-    else
-      raise StandardError, "画像がありません"
+  def illust_attachments_count_within_limit
+    if illust_attachments.size > 12
+      errors.add(:illust_attachments, "イラストは12枚まで選択できます")
     end
   end
 end
