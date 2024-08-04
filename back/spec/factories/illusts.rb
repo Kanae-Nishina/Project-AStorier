@@ -2,7 +2,8 @@ FactoryBot.define do
   factory :illust do
     trait(:with_image_one) do
       after(:create) do |illust|
-        illust.illust_attachments << create(:illust_attachment)
+        illust_attachment =  build(:illust_attachment, :with_image, illust: illust)
+        illust_attachment.save
       end
     end
 
@@ -10,7 +11,8 @@ FactoryBot.define do
     trait(:with_images_twelve) do |illust|
       after(:create) do |illust|
         MAX_IMAGES_COUNT.times do
-          illust.illust_attachments << create(:illust_attachment)
+          illust_attachment =  build(:illust_attachment, :with_image, illust: illust)
+          illust_attachment.save
         end
       end
     end
