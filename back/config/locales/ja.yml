@@ -9,6 +9,16 @@ ja:
       models:
         post:
           attributes:
+            title:
+              blank: "タイトルを入力してください"
+              too_long: "タイトルは%{count}文字以内で入力してください"
+            caption:
+              too_long: "キャプションは%{count}文字以内で入力してください"
+            publish_state:
+              blank: "公開状態を設定してください"
+            published_at:
+              blank: "公開日時を設定してください"
+              present: "公開日時は設定できません"
             post_synalios:
               invalid: "無効なシナリオです"
             post_tags:

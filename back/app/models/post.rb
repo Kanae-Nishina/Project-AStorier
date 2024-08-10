@@ -34,6 +34,9 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 20 }
   validates :caption, length: { maximum: 10_000 }
   enum publish_state: { draft: 0, all_publish: 1, only_url: 2, only_follower: 3, private_publish:4 }
+  validates :publish_state, presence: true
+  validate :published_at, :published_at_validates
+  validate :published_at, :published_at_update, on: :update
 
   scope :search_by_title, ->(post_title) { where("title LIKE ?", "%#{post_title}%") }
   scope :search_by_tags, -> (tag_list) {
@@ -152,7 +155,7 @@ class Post < ApplicationRecord
     post_game_systems.map { |pgs| GameSystem.find(pgs.game_system_id)}
   end
 
-  def initialize_postable(type)
+  def self.initialize_postable(type)
     case type
     when 'Illust'
       Illust
@@ -235,5 +238,34 @@ class Post < ApplicationRecord
       tags: get_tags.map(&:name),
       data: content
     }
+  end
+
+  private
+
+  def published_at_validates
+    published_at_between_1minutes
+    published_at_present
+  end
+
+  def published_at_present
+    if publish_state == 'draft' && published_at.present?
+      errors.add(:published_at, '非公開時は公開日時を設定できません')
+    elsif publish_state != 'draft' && published_at.nil?
+      errors.add(:published_at, '公開の場合は公開日時を設定してください')
+    end
+  end
+
+  def published_at_between_1minutes
+    return if published_at.nil?
+    now = Time.now
+    if !published_at.between?(now - 1.minute, now + 1.minute)
+      errors.add(:published_at, 'は現在時刻から1分を超えるのものは設定できません')
+    end
+  end
+
+  def published_at_update
+    if published_at.present?
+      errors.add(:published_at, '公開日時は変更できません')
+    end
   end
 end

@@ -3,10 +3,13 @@ FactoryBot.define do
     association :user
     sequence(:title) { |n| "title#{n}" }
     caption { 'caption' }
+    publish_state { Post.publish_states[:all_publish] }
+    published_at { DateTime.now }
 
-    states = [:draft, :all_publish, :only_url, :only_follower, :private_publish]
-    states.each do |state|
-      trait(state) { publish_state { Post.publish_states[state] } }
+    Post.publish_states.each do |state|
+      trait(state) do |state|
+        publish_state { Post.publish_states[state] }
+      end
     end
 
     trait :with_tags do
