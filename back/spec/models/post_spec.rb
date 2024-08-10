@@ -241,6 +241,88 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe 'タグ' do
+    it 'タグが作成できること' do
+      post = create(:post, :with_illust)
+      tags = ['test1', 'test2']
+      post.create_tags(tags)
+      expect(post.tags.count).to eq 2
+    end
+
+    it 'タグが更新できること' do
+      post = create(:post, :with_illust, :with_tags)
+      post.update_tags(['update1', 'update2', 'update2'])
+      expect(post.tags.count).to eq 3
+    end
+
+    it 'タグがない場合は投稿からタグの紐づけを削除できること' do
+      post = create(:post, :with_illust, :with_tags)
+      tags = []
+      post.update_tags(tags)
+      expect(post.tags.count).to eq 0
+    end
+
+    it 'タグの一覧が取得できること' do
+      post = create(:post, :with_illust)
+      tags = ['test1', 'test2', 'test3', 'test4']
+      post.create_tags(tags)
+      expect(post.get_tags.count).to eq 4
+    end
+  end
+
+  describe 'シナリオ' do
+    it 'シナリオが作成できること' do
+      post = create(:post, :with_illust, :with_synalios)
+      expect(post.synalios.count).to eq 1
+    end
+
+    it 'シナリオが更新できること' do
+      post = create(:post, :with_illust, :with_synalios)
+      post.update_synalios(['update1','update2','update3'])
+      expect(post.synalios.count).to eq 3
+    end
+
+    it 'シナリオがない場合は投稿からシナリオの紐づけを削除できること' do
+      post = create(:post, :with_illust, :with_synalios)
+      synalios = []
+      post.update_synalios(synalios)
+      expect(post.synalios.count).to eq 0
+    end
+
+    it 'シナリオの一覧が取得できること' do
+      post = create(:post, :with_illust)
+      post.create_synalios(['test1','test2','test3','test4'])
+      expect(post.get_synalios.count).to eq 4
+    end
+  end
+
+  describe 'システム' do
+    it 'システムを紐づけられること' do
+      post = create(:post, :with_illust)
+      systems_name = ['クラヤミクライン','アマデウス']
+      post.create_game_systems(systems_name)
+      expect(post.get_game_systems.count).to eq 2
+    end
+
+    it 'システムが更新できること' do
+      post = create(:post, :with_illust)
+      systems_name = ['クラヤミクライン','アマデウス','ウィッチクエスト']
+      post.create_game_systems(systems_name)
+      systems_name = ['神聖課金RPGディヴァインチャージャー','ダークデイズドライブ','Kutulu']
+      post.update_game_systems(systems_name)
+      expect(post.get_game_systems.first.name).to eq '神聖課金RPGディヴァインチャージャー'
+    end
+
+    it 'システムがない場合は投稿からシステムの紐づけを削除できること' do
+      post = create(:post, :with_illust)
+      systems_name = ['クラヤミクライン','アマデウス','ウィッチクエスト']
+      post.create_game_systems(systems_name)
+      systems_name = []
+      post.update_game_systems(systems_name)
+      expect(post.get_game_systems.count).to eq 0
+    end
+  end
+
   describe 'データ取得' do
     context 'uuid' do
       it '短縮uuidが取得できること' do
@@ -252,6 +334,74 @@ RSpec.describe Post, type: :model do
         post1 = create(:post, :with_illust)
         post2 = Post.find_by_short_uuid(post1.short_uuid)
         expect(post1).to eq post2
+      end
+    end
+
+    context 'システム' do
+      it 'システムが取得できること' do
+        post = create(:post, :with_illust)
+        post.create_game_systems([GameSystem.first.name])
+        expect(post.get_game_systems.first.name).to eq GameSystem.first.name
+      end
+    end
+
+    context '検索' do
+      it 'タイトルで検索できること' do
+        create(:post, :with_illust, title: 'test')
+        posts = Post.search_by_title('test')
+        expect(posts).not_to be_nil
+      end
+
+      it 'タグで検索できること' do
+        post = create(:post, :with_illust)
+        post.create_tags(['test'])
+        posts = Post.search_by_tags(['test'])
+        expect(posts).not_to be_nil
+      end
+
+      it 'シナリオで検索できること' do
+        post = create(:post, :with_illust)
+        post.create_synalios(['test'])
+        posts = Post.search_by_synalio('test')
+        expect(posts).not_to be_nil
+      end
+
+      it 'システムで検索できること' do
+        post = create(:post, :with_illust)
+        post.create_game_systems([GameSystem.first.name])
+        system = GameSystem.first
+        posts = Post.search_by_game_system(system.name)
+        expect(posts).not_to be_nil
+      end
+
+      it 'ユーザー名で検索できること' do
+        post = create(:post, :with_illust)
+        user = Post.search_by_user(post.user.name)
+        expect(user).not_to be_nil
+      end
+    end
+
+    context '公開範囲と表示' do
+      it '全体公開が取得できること' do
+        create(:post, :with_illust, :all_publish)
+        posts = Post.only_publish
+        expect(posts.count).to eq 1
+      end
+
+      it '全体公開以外は取得できないこと' do
+        create(:post, :with_illust, :draft, published_at: nil)
+        create(:post, :with_illust, :private_publish)
+        create(:post, :with_illust, :only_url)
+        create(:post, :with_illust, :only_follower)
+        posts = Post.only_publish
+        expect(posts.count).to eq 0
+      end
+
+      it '新着順に表示されること' do
+        create(:post, :with_illust, :all_publish)
+        post = create(:post, :with_illust, :all_publish)
+        posts = Post.publish_at_desc
+        expect(posts.first).to eq post
       end
     end
 
