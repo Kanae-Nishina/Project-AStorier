@@ -58,7 +58,7 @@ class Api::V1::PostsController < Api::V1::BasesController
         post.published_at = Time.now unless post.draft?
 
         # 投稿タイプに応じたクラス
-        postable_type = post.initialize_postable(post_params[:postable_type])
+        postable_type = Post.initialize_postable(post_params[:postable_type])
         # 投稿タイプのクラスをインスタンス
         post.postable = postable_type.create!
 
